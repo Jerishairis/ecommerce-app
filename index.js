@@ -1,7 +1,7 @@
 // dependencies
 const express = require("express");
 const mongoose = require("mongoose");
-
+const cors = require("cors");
 
 // routers
 const userRoutes = require("./routes/userRoutes.js");
@@ -11,6 +11,7 @@ const orderRoutes = require("./routes/orderRoutes.js");
 // to create a express server/application
 const app = express();
 
+app.use(cors());
 // to read json objects
 app.use(express.json());
 // to read forms
@@ -36,5 +37,4 @@ app.listen(process.env.PORT || 4000, () =>
 });
 
 
-// 3000, 4000, 5000, 8000 - Port numbers for Web applications
 

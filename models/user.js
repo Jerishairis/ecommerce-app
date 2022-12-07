@@ -3,7 +3,7 @@ const mongoose = require ("mongoose");
 const userSchema = new mongoose.Schema({
 	firstName: {
 		type: String,
-		required: [true, "First name is required"
+		required: [true, "First name is required"]
 	},
 	lastName: {
 		type: String,
