@@ -26,3 +26,66 @@ module.exports.getAllProducts = () => {
 		return result
 	})
 };
+
+
+module.exports.getProduct = (productId) => {
+	return Product.findById(productId).then(result => {
+		return result;
+	})
+};
+
+
+module.exports.updateProduct = (productId, newData) => {
+	if(newData.isAdmin == true){
+
+		return Product.findByIdAndUpdate(productId,
+		{
+			name: newData.product.name,
+			description: newData.product.description,
+			price: newData.product.price
+		}).then((updatedProduct, error) => {
+			if(error){
+				return false;
+			}
+			return newData;
+		})
+	}
+	else {
+		let message = Promise.resolve("User must be Admin to add update a product");
+		return message.then((value) => {return value})
+	}
+};
+
+
+module.exports.archiveProduct = (productId) => {
+	return Product.findByIdAndUpdate(productId, {
+		isActive: false
+	}).then((archivedProduct, error) => {
+		if(error) {
+			return false;
+		}
+		return {
+			message: "Product archived successfully!"
+		}
+	})
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
