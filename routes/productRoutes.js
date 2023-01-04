@@ -21,8 +21,11 @@ router.get("/allproducts", (request, response) => {
 
 router.get("/:productId", (request, response) => {
 	productController.getProduct(request.params.productId).then(resultFromController => response.send(resultFromController));
-});
+}); 
 
+router.get('/', (request, response) => {
+	productController.getActiveProduct().then(resultFromController => response.send(resultFromController))
+})
 
 router.patch("/:productId/update", auth.verify, (request,response) => {
 	const newData = {

@@ -44,5 +44,15 @@ module.exports.loginUser = (reqBody) => {
 };
 
 
-
+module.exports.getUserDetails = (userId) => {
+	return User.findById(userId).then((details, err) => {
+		if (err){
+			return false;
+		}
+		else {
+			details.password = "";
+			return details;
+		}
+	})
+};
 

@@ -23,13 +23,18 @@ module.exports.addProduct = (data) => {
 
 module.exports.getAllProducts = () => {
 	return Product.find({}).then(result => {
-		return result
-	})
+		return result;
+	});
 };
-
 
 module.exports.getProduct = (productId) => {
 	return Product.findById(productId).then(result => {
+		return result;
+	})
+};
+
+module.exports.getActiveProduct = () => {
+	return Product.find({isActive: true}).then(result => {
 		return result;
 	})
 };

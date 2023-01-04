@@ -11,10 +11,9 @@ router.post("/login", (request, response) => {
 });
 
 
-
-
-
-
+router.get("/:id/userDetails", (request, response) => {
+	userController.getUserDetails(request.params.id).then(resultFromController => response.send(resultFromController))
+});
 
 
 
