@@ -30,29 +30,3 @@ module.exports.createOrder = (data) => {
     }
 }
 
-/*
-module.exports.createOrder = (data) => {
-    if(data.isAdmin == false) {
-        let order = new Order ({
-            userId: data.userId,
-                products: [{
-                    productId: data.productId,
-                    quantity: data.quantity,
-                }],
-                totalAmount: data.totalAmount,
-        })
-
-       return order.save().then((order, err) => {
-            if (err) {
-                return err;
-            }
-            else {
-                return order;
-            }
-        })
-    }
-    else{
-        let message = Promise.resolve('User must be a regular user to create an order');
-        return message.then(value => value)
-    }
-}*/

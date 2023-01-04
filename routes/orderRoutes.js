@@ -22,11 +22,3 @@ module.exports = router;
 
 
 
-	/*
-const data = {
-		userId: auth.decode(req.headers.authorization).id,
-       	productId: req.body.productId,
-        quantity: req.body.quantity,
-        totalAmount: req.body.totalAmount,
-        isAdmin: auth.decode(req.headers.authorization.isAdmin)
-        */
