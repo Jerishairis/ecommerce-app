@@ -1,4 +1,4 @@
-const express = require("express");
+	const express = require("express");
 const router = express.Router();
 const productController = require("../controller/productController.js");
 const auth = require("../auth.js");
@@ -27,7 +27,7 @@ router.get('/', (request, response) => {
 	productController.getActiveProduct().then(resultFromController => response.send(resultFromController))
 })
 
-router.patch("/:productId/update", auth.verify, (request,response) => {
+router.patch("/update/:productId", auth.verify, (request,response) => {
 	const newData = {
 		product: request.body,
 		isAdmin: auth.decode(request.headers.authorization).isAdmin
@@ -38,7 +38,7 @@ router.patch("/:productId/update", auth.verify, (request,response) => {
 	});
 });
 
-router.patch("/:productId/archive", auth.verify, (request, response) => { 
+router.patch("/archive/:productId", auth.verify, (request, response) => { 
 	productController.archiveProduct(request.params.productId).then(resultFromController => {
 		response.send(resultFromController)
 	});

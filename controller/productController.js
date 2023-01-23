@@ -13,10 +13,7 @@ module.exports.addProduct = (data) => {
 			price: data.product.price
 		});
 		return newProduct.save().then((newProduct, error) => {
-			if(error) {
-				return error;
-			}
-			return newProduct;
+			return (error) ? false : true;
 		});
 	}
 };
@@ -49,10 +46,7 @@ module.exports.updateProduct = (productId, newData) => {
 			description: newData.product.description,
 			price: newData.product.price
 		}).then((updatedProduct, error) => {
-			if(error){
-				return false;
-			}
-			return newData;
+			return (error) ? false : true;
 		})
 	}
 	else {

@@ -56,3 +56,38 @@ module.exports.getUserDetails = (userId) => {
 	})
 };
 
+
+// Retreive user details
+module.exports.getProfile = (userData) => {
+	return User.findById(userData.id).then(result => {
+		// console.log(data.userId);
+		// console.log(result);
+		
+		if (result == null) {
+			return false
+		} else {
+			result.password = "*****"
+
+			// Returns the user information with the password as an empty string or asterisk.
+			return result
+		}
+	})
+};
+
+
+
+module.exports.checkUsernameExist = (reqBody) => {
+	// ".find" - a mongoose crud operation (query) to find a field value from a collection
+	return User.find({username: reqBody.username }).then(result => {
+		// condition if there is an exsiting  user
+		if(result.length > 0){
+			return true;
+		}
+		// condition if there is no existing user
+		else
+		{
+			return false;
+		}
+	})
+};
+

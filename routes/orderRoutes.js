@@ -11,7 +11,6 @@ router.post("/new-order", auth.verify, (req, res) => {
 		userId: authData.id,
        	productId: req.body.productId,
         quantity: req.body.quantity,
-        totalAmount: req.body.totalAmount,
         isAdmin: authData.isAdmin
 	}
 	orderController.createOrder(data).then(resultFromController => res.send(resultFromController))

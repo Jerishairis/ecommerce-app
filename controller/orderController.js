@@ -11,17 +11,11 @@ module.exports.createOrder = (data) => {
                 products: {
                     productId: data.productId,
                     quantity: data.quantity,
-                },
-                totalAmount: data.totalAmount
+                }
         })
 
        return order.save().then((order, err) => {
-            if (err) {
-                return err;
-            }
-            else {
-                return order;
-            }
+        return (err) ? false : true;
         })
     }
     else{
