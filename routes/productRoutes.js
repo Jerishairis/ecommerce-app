@@ -39,7 +39,10 @@ router.patch("/update/:productId", auth.verify, (request,response) => {
 });
 
 router.patch("/archive/:productId", auth.verify, (request, response) => { 
-	productController.archiveProduct(request.params.productId).then(resultFromController => {
+	const productId = request.params.productId
+	const isActive = request.body.isActive
+
+	productController.archiveProduct(productId, isActive).then(resultFromController => {
 		response.send(resultFromController)
 	});
 });

@@ -56,16 +56,9 @@ module.exports.updateProduct = (productId, newData) => {
 };
 
 
-module.exports.archiveProduct = (productId) => {
-	return Product.findByIdAndUpdate(productId, {
-		isActive: false
-	}).then((archivedProduct, error) => {
-		if(error) {
-			return false;
-		}
-		return {
-			message: "Product archived successfully!"
-		}
+module.exports.archiveProduct = (productId, isActive) => {
+	return Product.findByIdAndUpdate(productId, { isActive }).then((_, error) => {
+		return (error) ? false : true;
 	})
 };
 
